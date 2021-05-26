@@ -1,0 +1,102 @@
+*{
+    margin: 0PX;
+    padding: 0px;
+}
+body{
+    background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2020/04/star-wars-video-call-backgrounds-4.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+}
+.heading{
+    background:gray;
+    color:white;
+    display: flex;
+    text-align: center;
+    border: 3px solid greenyellow;
+    border-radius: 25px;
+    padding: 0 10px;
+    margin-top: 3px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: white;
+}
+
+.gridcontainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.videoplayercontainer{
+    background-color:gray;
+    margin: 10px;
+    border: 3px solid greenyellow;
+    border-radius:5px;
+    max-width: 100%;
+    padding: 5px;
+}
+.videoplayer{
+    background-color: white;
+    
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+.videoplayercontainer h4{
+    color:white;
+    text-align: center;
+    margin-bottom: 3px;
+}
+.options{
+    width: 80%;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid greenyellow;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.options div p{
+    margin-bottom: 0px;
+    font-size: 18px;
+    font-weight: 400;
+}
+.options div input{
+    margin-bottom: 10px;
+    padding: 5px 1px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-bottom: 3px solid blueviolet;
+    outline:none;
+    width: calc(100% - 0px);
+}
+.options div button{
+    width: 100%;
+    background-color: blueviolet;
+    margin-bottom: 10px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+.info{
+    color: black;
+    margin: auto;
+    padding: 5px 10px;
+}
+.call{
+    color: black;
+    margin: auto;
+    padding: 5px 10px;
+}
