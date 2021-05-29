@@ -9,7 +9,10 @@ const Notification = () => {
                 call.isReceivedCall && !callAccepted &&(
                     <div>
                         <h1>{call.name} is calling</h1>
-                        <button onClick={answerCall}>Answer</button>
+                        <button onClick={answerCall}>
+                            <span className="material-icons">phone_in_talk</span>
+                            Answer
+                        </button>
                     </div>
                 )
             }

@@ -88,7 +88,7 @@ body{
     border: none;
     border-radius: 10px;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
 }
 .info{
     color: black;
@@ -99,4 +99,22 @@ body{
     color: black;
     margin: auto;
     padding: 5px 10px;
+}
+.answercall{
+    width:60%;
+    color: black;
+    margin: auto;
+    text-align: center;
+}
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+    padding-right: 5px;
+}
+@media (max-width:420px){
+    .answercall{
+        width: 90%;
+    }
+    
 }

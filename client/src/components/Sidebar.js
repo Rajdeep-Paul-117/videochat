@@ -12,8 +12,10 @@ const Sidebar = ({children}) => {
                 <h3>Account Info</h3>
                 <p>Name</p>
                 <input placeholder="Enter Your Name" value={name} onChange={(e)=>setName(e.target.value)} ></input>
-                <button onClick={() => {navigator.clipboard.writeText(me)}}>Copy Id</button>
-                {children}
+                <button onClick={() => {navigator.clipboard.writeText(me)}}>
+                <span className="material-icons">content_copy</span>
+                        Copy Id
+                </button>
             </div>
             <div className="call">
                 <h3>Make a call</h3>
@@ -21,13 +23,20 @@ const Sidebar = ({children}) => {
                 <input placeholder="Enter Id to Call" value={idToCall} onChange={(e)=>setidToCall(e.target.value)} ></input>
                 
                 {
-                    callAccepted && !callEnded ?(
-                        <button onClick={leaveCall} >End Call</button>
+                    callAccepted && !callEnded ? (
+                        <button onClick={leaveCall} >
+                            <span className="material-icons">call_end</span>
+                                End Call
+                        </button>
                     ):(
-                        <button onClick={()=>callUser(idToCall)} >Call User</button>
+                        <button onClick={()=>callUser(idToCall)} >
+                            <span className="material-icons">phone</span>
+                                Call User
+                        </button>
                     )
                 }
             </div>
+            <div className="answercall" >{children}</div>
         </div>
     )
 }

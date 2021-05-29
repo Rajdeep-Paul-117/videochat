@@ -3,16 +3,16 @@ import {io} from 'socket.io-client'
 import Peer from 'simple-peer'
 
 const SocketContext=createContext();
-/*const socket=io('http://localhost:5000')*/
+// const socket=io('http://localhost:5000')
 const socket=io('https://video-calling-website.herokuapp.com')
 
 const ContextProvider=({children})=>{
 
-    const [stream, setstream] = useState(null)
-    const [me, setme] = useState('')
-    const [call, setCall] = useState([])
+    const [stream, setStream] = useState()
+    const [me, setMe] = useState('')
+    const [call, setCall] = useState({})
     const [callAccepted, setCallAccepted] = useState(false)
-    const [callEnded, setcallEnded] = useState(false)
+    const [callEnded, setCallEnded] = useState(false)
     const [name, setName] = useState('')
 
     const  myVideo = useRef()
@@ -22,18 +22,17 @@ const ContextProvider=({children})=>{
     useEffect(()=>{
         navigator.mediaDevices.getUserMedia({video:true,audio:true})
             .then((currentStream)=>{
-                setstream(currentStream);
+                setStream(currentStream);
                 myVideo.current.srcObject=currentStream;
             })
 
-        socket.on('me',(id)=>setme(id));
+        socket.on('me',(id)=>setMe(id));
 
         socket.on('callUser',({from,name:callerName,signal})=>{
             setCall({isReceivedCall:true,from,name:callerName,signal});
         });
 
     },[])
-
 
     const answerCall=()=>{
 
@@ -56,7 +55,6 @@ const ContextProvider=({children})=>{
 
 
     const callUser=(id)=>{
-        
         const peer =new Peer({initiator:true,trickle:false,stream});
         
         peer.on('signal',(data)=>{
@@ -64,7 +62,8 @@ const ContextProvider=({children})=>{
         })
 
         peer.on('stream',(currentStream)=>{
-            userVideo.current.srcObject=currentStream;
+           userVideo.current.srcObject=currentStream;
+
         })
         socket.on('callAccepted',(signal)=>{
             setCallAccepted(true);
@@ -76,14 +75,14 @@ const ContextProvider=({children})=>{
     }
 
 
-    const leavecall=()=>{
-        setcallEnded(true);
+    const leaveCall=()=>{
+        setCallEnded(true);
         connectionRef.current.destroy();
         window.location.reload();
     }
 
     return(
-        <SocketContext.Provider value={{call,callAccepted,myVideo,userVideo,stream,name,setName,callEnded,me,answerCall,callUser,leavecall}}>
+        <SocketContext.Provider value={{call,callAccepted,myVideo,userVideo,stream,name,setName,callEnded,me,answerCall,callUser,leaveCall}}>
             {children}
         </SocketContext.Provider>
     )
